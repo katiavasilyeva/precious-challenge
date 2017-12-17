@@ -15,14 +15,14 @@ export default class App extends Component{
     }
     render(){
         return(
-          <div>
-          hello
-            { this.state.trips.map((trip,i) =>(
-                <div key = {i}>
-                    <Trip
-                    trip = {this.state.trips[i]}/>
-                </div>
-            ))}
+          <div className="container">
+              <h1 className="text-center"> Adventure Trips   </h1>
+                { this.state.trips.map((trip,i) =>(
+                    <div key = {i} className=".col-md-4">
+                            <Trip
+                            trip = {this.state.trips[i]}/>
+                    </div>
+                ))}
            </div>
         );
     }

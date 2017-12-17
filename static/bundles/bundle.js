@@ -18324,12 +18324,17 @@ var App = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                null,
-                'hello',
+                { className: 'container' },
+                _react2.default.createElement('input', { type: 'radio' }),
+                _react2.default.createElement(
+                    'h1',
+                    { className: 'text-center' },
+                    ' Adventure Trips   '
+                ),
                 this.state.trips.map(function (trip, i) {
                     return _react2.default.createElement(
                         'div',
-                        { key: i },
+                        { key: i, className: '.col-md-4' },
                         _react2.default.createElement(_trip2.default, {
                             trip: _this2.state.trips[i] })
                     );
@@ -18393,12 +18398,40 @@ var Trip = function (_Component) {
     }
 
     _createClass(Trip, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return _react2.default.createElement(
-                'div',
-                { key: this.props.trip.title },
-                this.props.trip.title
+                "div",
+                { className: "container" },
+                _react2.default.createElement(
+                    "h4",
+                    { className: "text-center" },
+                    this.props.trip.travel_style,
+                    " : ",
+                    this.props.trip.title
+                ),
+                _react2.default.createElement(
+                    "ul",
+                    { className: "list-group" },
+                    _react2.default.createElement(
+                        "li",
+                        { className: "list-group-item" },
+                        "Destination: ",
+                        this.props.trip.destination
+                    ),
+                    _react2.default.createElement(
+                        "li",
+                        { className: "list-group-item" },
+                        "Duration: ",
+                        this.props.trip.duration_days
+                    ),
+                    _react2.default.createElement(
+                        "li",
+                        { className: "list-group-item" },
+                        "Cost: $",
+                        this.props.trip.cost
+                    )
+                )
             );
         }
     }]);
