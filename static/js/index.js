@@ -1,17 +1,5 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/app'
 
-export default class Hello extends Component{
-    constructor(){
-        super();
-    }
-    render(){
-        return(
-            <div>Hello</div>
-
-        )
-
-    }
-}
-
-ReactDOM.render(<Hello/>,document.getElementById('container'))
+ReactDOM.render(<App/>,document.getElementById('container'))

@@ -22,7 +22,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # set the http://127.0.0.1:8000/ url to return one view that lists all trips
-    url(r'^api',views.TripList.as_view()),
+    url(r'^api/',views.TripList.as_view()),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
 ]
 
