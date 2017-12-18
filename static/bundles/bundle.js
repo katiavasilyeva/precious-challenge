@@ -954,6 +954,7 @@ var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// render the App component
 _reactDom2.default.render(_react2.default.createElement(_app2.default, null), document.getElementById('container'));
 
 /***/ }),
@@ -18297,6 +18298,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// this component is meant to handle all the logic and pass it down to the Trip component
 var App = function (_Component) {
     _inherits(App, _Component);
 
@@ -18306,15 +18308,17 @@ var App = function (_Component) {
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
         _this.state = {
+            // create an empty array that will hold the trips
             trips: []
-        };
-        _this.getTrips = _this.getTrips.bind(_this);
+            // bind the getTrips function
+        };_this.getTrips = _this.getTrips.bind(_this);
         return _this;
     }
 
     _createClass(App, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            // when component mounts, call the function getTrips
             this.getTrips();
         }
     }, {
@@ -18325,7 +18329,6 @@ var App = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                _react2.default.createElement('input', { type: 'radio' }),
                 _react2.default.createElement(
                     'h1',
                     { className: 'text-center' },
@@ -18341,6 +18344,8 @@ var App = function (_Component) {
                 })
             );
         }
+        // getTrips makes an AJAX call to /api/ which returns the trip data in JSON format
+
     }, {
         key: 'getTrips',
         value: function getTrips() {
@@ -18350,6 +18355,7 @@ var App = function (_Component) {
                 url: "/api/",
                 method: "GET",
                 contentType: "application/json"
+                // setState using the response
             }).then(function (trips) {
                 return _this3.setState({ trips: trips });
             }).catch(function (error) {
@@ -18388,6 +18394,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// this is a presentational component
 var Trip = function (_Component) {
     _inherits(Trip, _Component);
 
@@ -18398,37 +18405,37 @@ var Trip = function (_Component) {
     }
 
     _createClass(Trip, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { className: "container" },
+                'div',
+                { className: 'container', style: { maxWidth: '600px' } },
                 _react2.default.createElement(
-                    "h4",
-                    { className: "text-center" },
+                    'h4',
+                    { className: 'text-center' },
                     this.props.trip.travel_style,
-                    " : ",
+                    ' : ',
                     this.props.trip.title
                 ),
                 _react2.default.createElement(
-                    "ul",
-                    { className: "list-group" },
+                    'ul',
+                    { className: 'list-group align-items-center' },
                     _react2.default.createElement(
-                        "li",
-                        { className: "list-group-item" },
-                        "Destination: ",
+                        'li',
+                        { className: 'list-group-item' },
+                        'Destination: ',
                         this.props.trip.destination
                     ),
                     _react2.default.createElement(
-                        "li",
-                        { className: "list-group-item" },
-                        "Duration: ",
+                        'li',
+                        { className: 'list-group-item' },
+                        'Duration: ',
                         this.props.trip.duration_days
                     ),
                     _react2.default.createElement(
-                        "li",
-                        { className: "list-group-item" },
-                        "Cost: $",
+                        'li',
+                        { className: 'list-group-item' },
+                        'Cost: $',
                         this.props.trip.cost
                     )
                 )
