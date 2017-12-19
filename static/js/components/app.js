@@ -39,6 +39,6 @@ export default class App extends Component{
         } ).then((trips) => this.setState({trips:trips})).catch(
             (error) => {
             console.log(error)
-        } )
+        })
     }
 }

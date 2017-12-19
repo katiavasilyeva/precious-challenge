@@ -19,9 +19,6 @@ module.exports = {
       ]
     },
     devtool: 'source-map',
-    devServer: {
-      historyApiFallback: true
-    },
     plugins: [
         new BundleTracker({filename: './webpack-stats.json'}),
     ]
